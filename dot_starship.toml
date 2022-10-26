@@ -1,0 +1,101 @@
+scan_timeout = 30
+command_timeout = 2000
+add_newline = false
+format = """
+$username\
+$hostname\
+${custom.ssh}\
+$env_var\
+$conda\
+${custom.ros}\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$docker_context\
+$python\
+$status\
+$cmd_duration\
+$line_break\
+$jobs\
+$character"""
+
+[username]
+style_user = "bold fg:black bg:yellow"
+style_root = "bold fg:red bg:yellow"
+format = "[ $user ]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+style = "bold fg:white bg:purple"
+format = "[ $hostname ]($style)"
+disabled = false
+
+[custom.ssh]
+command = "echo SSH"
+style = "bold fg:white bg:red"
+symbol = "🅢"
+when = """ test ! -z "$SSH_CLIENT" """
+format = "[ $symbol $output ]($style)"
+disabled = false
+
+[env_var]
+variable = "CUDA_VISIBLE_DEVICES"
+default = ""
+style = "bold fg:white bg:green"
+format = "[ $env_value ]($style)"
+
+[conda]
+symbol = "🅒"
+ignore_base = false
+style = "bold fg:white bg:cyan"
+format = "[ $symbol $environment ]($style)"
+
+[custom.ros]
+command = "echo $ROS_DISTRO $CATKIN_WS_NAME"
+style = "bold fg:white bg:blue"
+symbol = "🅡"
+when = """ test ! -z "$ROS_DISTRO" """
+format = "[ $symbol $output ]($style)"
+disabled = false
+
+[directory]
+truncation_length = 8
+truncate_to_repo = false
+style = "fg:white bg:#3A3A3A"
+read_only_style = "bg:#3A3A3A"
+disabled = false
+format = "[ $read_only]($read_only_style)[$path ]($style)"
+
+[git_branch]
+# symbol = "🌱"
+symbol = "\ue0a0"
+truncation_symbol = ""
+style = "bold fg:white bg:90"
+format = "[ ${symbol} $branch ]($style)"
+
+[git_status]
+style = "bold fg:208"
+ahead = "⇡${count}"
+diverged = "⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+format = '([ \[$all_status$ahead_behind\]]($style))'
+
+[git_state]
+format = '[ \($state( $progress_current of $progress_total)\) ]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_commit]
+format = "[ \\($hash$tag\\)]($style) "
+
+[python]
+symbol = "🐍"
+format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+python_binary = "python"
+
+[cmd_duration]
+style = "bold 45"
+format = "[ $duration]($style)"
