@@ -296,19 +296,33 @@ cj() {
 
 complete -F _roscomplete_rosws_switch cj
 
-function catkin_run_coverage() {
-    if [ $# -eq 0 ]; then
-        echo -e "catkin_run_coverage requires at least a package"
-        return 0
-    fi
+export CONDA_TOP_DIR="$HOME/mambaforge"
 
-    catkin run_tests
-    for var in "$@"; do
-        catkin run_tests --no-deps $var -DCMAKE_BUILD_TYPE=Coverage --make-args "run_coverage_$var"
-        xdg-open "build/$var/coverage/index.html"
-    done
-    gcovr -r .
+if [ -z $CONDA_TOP_DIR ]; then
+    echo "nj(): Please set CONDA_TOP_DIR to the conda installation directory for this script to work."
+fi
+
+_conda_switch() {
+    local cur CONDA_ENVS
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    CONDA_ENVS=$(find $CONDA_TOP_DIR/envs -mindepth 1 -maxdepth 1 -type d | grep -v "^.$" | sed 's/.*\///')
+    COMPREPLY=($(compgen -W "${CONDA_ENVS}" -- ${cur}))
+    return 0
 }
+
+# catkin_jump
+nj() {
+    if [ $# -eq 1 ]; then
+        echo "mamba activate $1"
+        mamba activate $1
+    else
+        echo "mamba activate base"
+        mamba activate base
+    fi
+}
+
+complete -F _conda_switch nj
 
 # source conda + env
 function scon() {
@@ -344,34 +358,34 @@ function upal_clang {
 
     sudo update-alternatives \
         --verbose \
-        --install /usr/bin/llvm-config       llvm-config      /usr/bin/llvm-config-${version} ${priority} \
-        --slave   /usr/bin/llvm-ar           llvm-ar          /usr/bin/llvm-ar-${version} \
-        --slave   /usr/bin/llvm-as           llvm-as          /usr/bin/llvm-as-${version} \
-        --slave   /usr/bin/llvm-bcanalyzer   llvm-bcanalyzer  /usr/bin/llvm-bcanalyzer-${version} \
-        --slave   /usr/bin/llvm-cov          llvm-cov         /usr/bin/llvm-cov-${version} \
-        --slave   /usr/bin/llvm-diff         llvm-diff        /usr/bin/llvm-diff-${version} \
-        --slave   /usr/bin/llvm-dis          llvm-dis         /usr/bin/llvm-dis-${version} \
-        --slave   /usr/bin/llvm-dwarfdump    llvm-dwarfdump   /usr/bin/llvm-dwarfdump-${version} \
-        --slave   /usr/bin/llvm-extract      llvm-extract     /usr/bin/llvm-extract-${version} \
-        --slave   /usr/bin/llvm-link         llvm-link        /usr/bin/llvm-link-${version} \
-        --slave   /usr/bin/llvm-mc           llvm-mc          /usr/bin/llvm-mc-${version} \
-        --slave   /usr/bin/llvm-nm           llvm-nm          /usr/bin/llvm-nm-${version} \
-        --slave   /usr/bin/llvm-objdump      llvm-objdump     /usr/bin/llvm-objdump-${version} \
-        --slave   /usr/bin/llvm-ranlib       llvm-ranlib      /usr/bin/llvm-ranlib-${version} \
-        --slave   /usr/bin/llvm-readobj      llvm-readobj     /usr/bin/llvm-readobj-${version} \
-        --slave   /usr/bin/llvm-rtdyld       llvm-rtdyld      /usr/bin/llvm-rtdyld-${version} \
-        --slave   /usr/bin/llvm-size         llvm-size        /usr/bin/llvm-size-${version} \
-        --slave   /usr/bin/llvm-stress       llvm-stress      /usr/bin/llvm-stress-${version} \
-        --slave   /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-${version} \
-        --slave   /usr/bin/llvm-tblgen       llvm-tblgen      /usr/bin/llvm-tblgen-${version} \
-        --slave   /usr/bin/llvm-objcopy      llvm-objcopy     /usr/bin/llvm-objcopy-${version} \
-        --slave   /usr/bin/llvm-strip	     llvm-strip       /usr/bin/llvm-strip-${version}
+        --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-${version} ${priority} \
+        --slave /usr/bin/llvm-ar llvm-ar /usr/bin/llvm-ar-${version} \
+        --slave /usr/bin/llvm-as llvm-as /usr/bin/llvm-as-${version} \
+        --slave /usr/bin/llvm-bcanalyzer llvm-bcanalyzer /usr/bin/llvm-bcanalyzer-${version} \
+        --slave /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${version} \
+        --slave /usr/bin/llvm-diff llvm-diff /usr/bin/llvm-diff-${version} \
+        --slave /usr/bin/llvm-dis llvm-dis /usr/bin/llvm-dis-${version} \
+        --slave /usr/bin/llvm-dwarfdump llvm-dwarfdump /usr/bin/llvm-dwarfdump-${version} \
+        --slave /usr/bin/llvm-extract llvm-extract /usr/bin/llvm-extract-${version} \
+        --slave /usr/bin/llvm-link llvm-link /usr/bin/llvm-link-${version} \
+        --slave /usr/bin/llvm-mc llvm-mc /usr/bin/llvm-mc-${version} \
+        --slave /usr/bin/llvm-nm llvm-nm /usr/bin/llvm-nm-${version} \
+        --slave /usr/bin/llvm-objdump llvm-objdump /usr/bin/llvm-objdump-${version} \
+        --slave /usr/bin/llvm-ranlib llvm-ranlib /usr/bin/llvm-ranlib-${version} \
+        --slave /usr/bin/llvm-readobj llvm-readobj /usr/bin/llvm-readobj-${version} \
+        --slave /usr/bin/llvm-rtdyld llvm-rtdyld /usr/bin/llvm-rtdyld-${version} \
+        --slave /usr/bin/llvm-size llvm-size /usr/bin/llvm-size-${version} \
+        --slave /usr/bin/llvm-stress llvm-stress /usr/bin/llvm-stress-${version} \
+        --slave /usr/bin/llvm-symbolizer llvm-symbolizer /usr/bin/llvm-symbolizer-${version} \
+        --slave /usr/bin/llvm-tblgen llvm-tblgen /usr/bin/llvm-tblgen-${version} \
+        --slave /usr/bin/llvm-objcopy llvm-objcopy /usr/bin/llvm-objcopy-${version} \
+        --slave /usr/bin/llvm-strip llvm-strip /usr/bin/llvm-strip-${version}
 
     sudo update-alternatives \
         --verbose \
-        --install /usr/bin/clang              clang            /usr/bin/clang-${version} ${priority} \
-        --slave   /usr/bin/clang++            clang++          /usr/bin/clang++-${version} \
-        --slave   /usr/bin/clang-format       clang-format     /usr/bin/clang-format-${version} \
-        --slave   /usr/bin/clang-tidy         clang-tidy       /usr/bin/clang-tidy-${version}
+        --install /usr/bin/clang clang /usr/bin/clang-${version} ${priority} \
+        --slave /usr/bin/clang++ clang++ /usr/bin/clang++-${version} \
+        --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-${version} \
+        --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-${version}
 
 }

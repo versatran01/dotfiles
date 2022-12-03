@@ -1,7 +1,7 @@
 # improve history, ignore meaningless command
 export HISTIGNORE="&:ls:cd:[bf]g:exit:?:??:??:rm*"
-export HISTSIZE=20000
-export HISTFILESIZE=20000
+export HISTSIZE=100000
+export HISTFILESIZE=200000
 # avoid duplicates..
 export HISTCONTROL=ignoredups:erasedups
 export PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
