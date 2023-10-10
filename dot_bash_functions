@@ -275,19 +275,12 @@ _roscomplete_rosws_switch() {
 
 # catkin_jump
 cj() {
-    scon ros1n
-    if [ -e $ROS_WS_TOP_DIR/$1/devel/setup.bash ]; then
-        echo "source $ROS_WS_TOP_DIR/$1/devel/setup.bash"
-        source $ROS_WS_TOP_DIR/$1/devel/setup.bash
+    srosh
+    if [ -e $ROS_WS_TOP_DIR/$1/install/local_setup.bash ]; then
+        echo "source $ROS_WS_TOP_DIR/$1/install/local_setup.bash"
+        source $ROS_WS_TOP_DIR/$1/install/local_setup.bash
         # HACK prepend stuff that should go even before this in path
         export CATKIN_WS_NAME="$1"
-        # export PATH=$ROS_PATH_OVERLAY:$PATH
-        cd $ROS_WS_TOP_DIR/$1
-    elif [ -e $ROS_WS_TOP_DIR/$1/install/setup.bash ]; then
-        echo "source $ROS_WS_TOP_DIR/$1/install/setup.bash"
-        source $ROS_WS_TOP_DIR/$1/install/setup.bash
-        export CATKIN_WS_NAME="$1"
-        # export PATH=$ROS_PATH_OVERLAY:$PATH
         cd $ROS_WS_TOP_DIR/$1
     else
         echo "$1 does not exist in $ROS_WS_TOP_DIR"
@@ -296,7 +289,7 @@ cj() {
 
 complete -F _roscomplete_rosws_switch cj
 
-export CONDA_TOP_DIR="$HOME/mambaforge"
+export CONDA_TOP_DIR="$HOME/miniforge3"
 
 if [ -z $CONDA_TOP_DIR ]; then
     echo "sc(): Please set CONDA_TOP_DIR to the conda installation directory for this script to work."
@@ -324,17 +317,15 @@ sc() {
 
 complete -F _conda_switch sc
 
-# source conda + env
-function scon() {
-    if [ $# -eq 1 ]; then
-        echo "source env $1"
-        mamba activate $1
-    fi
-    return 0
-}
-
 # set gpu id
 function gpu() {
     export CUDA_VISIBLE_DEVICES="$1"
     export TS_SOCKET="/tmp/cuda$1"
+}
+
+function srosh() {
+  sc ros2h
+  eval "$(register-python-argcomplete ros2)"
+  eval "$(register-python-argcomplete colcon)"
+  source ~/miniforge3/envs/ros2h/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 }

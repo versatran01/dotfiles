@@ -36,8 +36,6 @@ alias gdh='git diff HEAD'
 
 # source bashrc
 alias sbrc='source ~/.bashrc'
-alias srosn='scon ros1n'
-alias srosh='scon ros2h'
 
 #cd
 alias cd..='cd ..'
@@ -62,3 +60,5 @@ alias ppwd='export PYTHONPATH=$(pwd):$PYTHONPATH'
 # cpu
 alias cpuperf='sudo cpupower frequency-set --governor performance'
 alias cpusave='sudo cpupower frequency-set --governor powersave'
+
+alias exa2='exa --tree --level=2 --long'
