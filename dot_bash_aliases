@@ -62,3 +62,4 @@ alias cpuperf='sudo cpupower frequency-set --governor performance'
 alias cpusave='sudo cpupower frequency-set --governor powersave'
 
 alias exa2='exa --tree --level=2 --long'
+alias md='mamba deactivate'
