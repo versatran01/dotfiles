@@ -17,7 +17,7 @@ import subprocess
               type=bool,
               help="BUILD_SHARED_LIBS")
 @click.option('--cache',
-              default=True,
+              default=False,
               type=bool,
               help="CMAKE_CXX_COMPILER_LAUNCHER")
 @click.option('--export',
