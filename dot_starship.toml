@@ -98,3 +98,8 @@ python_binary = "python"
 [cmd_duration]
 style = "bold 45"
 format = "[ $duration]($style)"
+
+[sudo]
+style = 'bold green'
+symbol = '👩‍💻 '
+disabled = false
