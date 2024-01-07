@@ -102,8 +102,6 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export STARSHIP_CONFIG=~/.starship.toml
-# eval "$(starship init zsh)"
 
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
@@ -131,3 +129,7 @@ if [ -f "/home/chao/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+export VIRTUAL_ENV_DISABLE_PROMPT=0
+
+export STARSHIP_CONFIG=~/.starship.toml
+eval "$(starship init zsh)"

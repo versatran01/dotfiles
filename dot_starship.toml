@@ -8,6 +8,7 @@ ${custom.ssh}\
 $conda\
 ${custom.ros}\
 $directory\
+$shell\
 $git_branch\
 $git_commit\
 $git_state\
@@ -102,4 +103,11 @@ format = "[ $duration]($style)"
 [sudo]
 style = 'bold green'
 symbol = '👩‍💻 '
+disabled = false
+
+[shell]
+bash_indicator = "B"
+zsh_indicator = "Z"
+style = "bold fg:white bg:green"
+format = "[ $indicator ]($style)"
 disabled = false
