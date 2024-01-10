@@ -22,6 +22,7 @@
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(bold magenta)- %an%C(reset)' --all
   lg = !"git lg1"
   pr = pull --recurse-submodules
+  df = difftool
 [color]
   branch = auto
   diff = auto
@@ -41,8 +42,6 @@
   added = green bold
   changed = yellow bold
   untracked = red bold
-[diff]
-  tool = vimdiff
 [credential]
   helper = cache --timeout=3600
 [push]
@@ -52,3 +51,11 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[diff]
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true

@@ -133,3 +133,5 @@ export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
+
+source /home/chao/.config/broot/launcher/bash/br
