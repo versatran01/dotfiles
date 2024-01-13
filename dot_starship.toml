@@ -106,6 +106,7 @@ disabled = false
 [shell]
 bash_indicator = "B"
 zsh_indicator = "Z"
+fish_indicator = "F"
 style = "bold fg:white bg:green"
 format = "[ $indicator ]($style)"
 disabled = false
