@@ -6,6 +6,7 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore
   autocrlf = false
+  pager = delta
 [color]
   ui = true
 [alias]
@@ -14,15 +15,9 @@
   bra = branch -a
   cm = commit
   st = status
-  stpull = subtree pull --squash --prefix
-  stpush = subtree push --prefix
   last = log -1 HEAD
-  vis = !gitg &
-  lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold magenta)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(bold magenta)- %an%C(reset)' --all
-  lg = !"git lg1"
   pr = pull --recurse-submodules
-  df = difftool
+  df = diff
 [color]
   branch = auto
   diff = auto
@@ -42,20 +37,3 @@
   added = green bold
   changed = yellow bold
   untracked = red bold
-[credential]
-  helper = cache --timeout=3600
-[push]
-  default = simple
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-[diff]
-  tool = difftastic
-[difftool]
-  prompt = false
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-  difftool = true
