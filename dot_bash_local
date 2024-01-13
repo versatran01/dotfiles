@@ -85,6 +85,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export GTEST_COLOR=1
 
+source ~/.local/share/blesh/ble.sh
+ble-face auto_complete='fg=242,bg=235'
+
 # Get my ip address
 function myip() {
     local myip=$(w3m -dump http://checkip.dyndns.org:8245/)
@@ -154,3 +157,4 @@ sc() {
 }
 
 complete -F _conda_switch sc
+

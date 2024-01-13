@@ -17,16 +17,27 @@ $docker_context\
 $python\
 $status\
 $cmd_duration\
+$fill\
+$time\
 $line_break\
 $jobs\
 $character"""
+
+[time]
+style = "bold fg:black bg:white"
+format = '[ $time ]($style)'
+time_format = '%T'
+disabled = false
+
+[fill]
+symbol = ' '
 
 [username]
 style_user = "bold fg:black bg:yellow"
 style_root = "bold fg:red bg:yellow"
 format = "[ $user ]($style)"
-disabled = false
 show_always = true
+disabled = false
 
 [hostname]
 ssh_only = false
