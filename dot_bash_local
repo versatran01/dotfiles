@@ -52,7 +52,7 @@ else
 fi
 
 # starship
-export STARSHIP_CONFIG=~/.starship.toml
+export STARSHIP_CONFIG=~/config/starship.toml
 eval "$(starship init bash)"
 
 eval "$(zoxide init bash)"
@@ -65,7 +65,7 @@ alias cd......='cd ../../../../..'
 
 eval "$(atuin init bash --disable-up-arrow --disable-ctrl-r)"
 
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND='fd . --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export GTEST_COLOR=1
@@ -135,4 +135,3 @@ sc() {
 }
 
 complete -F _conda_switch sc
-

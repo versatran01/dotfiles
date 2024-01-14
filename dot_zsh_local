@@ -4,7 +4,7 @@ alias vim='nvim'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --no-ignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # history
@@ -13,7 +13,7 @@ export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
 
 # starship
-export STARSHIP_CONFIG=~/.starship.toml
+export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
 # zoxide

@@ -1,3 +1,4 @@
+# vim
 export EDITOR=nvim
 alias vim='nvim'
 
@@ -41,6 +42,7 @@ alias cpuperf='sudo cpupower frequency-set --governor performance'
 alias cpusave='sudo cpupower frequency-set --governor powersave'
 
 alias cmb='cmake -B build'
+alias cbb='cmake --build build'
 
 alias ls='eza'
 alias ll='eza -l --icons'
