@@ -29,9 +29,12 @@ alias gdh='git diff HEAD'
 
 # source bashrc
 alias sbrc='source ~/.bashrc'
+alias szrc='source ~/.zshrc'
 
 alias ppwd='export PYTHONPATH=$(pwd):$PYTHONPATH'
 
 # cpu
 alias cpuperf='sudo cpupower frequency-set --governor performance'
 alias cpusave='sudo cpupower frequency-set --governor powersave'
+
+alias cmb='cmake -B build'

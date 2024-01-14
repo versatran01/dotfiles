@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump fzf history copypath zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git autojump fzf history copypath)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,39 +100,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-export HISTSIZE=1000000
-export SAVEHIST=$HISTSIZE
-setopt EXTENDED_HISTORY
-
-alias sup='sudo apt update'
-alias sug='sudo apt upgrade'
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/chao/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/chao/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/chao/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/chao/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/home/chao/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/chao/miniforge3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-export VIRTUAL_ENV_DISABLE_PROMPT=0
-
-export STARSHIP_CONFIG=~/.starship.toml
-eval "$(starship init zsh)"
-
-source /home/chao/.config/broot/launcher/bash/br
+source ~/.zsh_local

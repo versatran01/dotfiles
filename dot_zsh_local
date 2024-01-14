@@ -1,0 +1,48 @@
+# vim
+export EDITOR=nvim
+alias vim='nvim'
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# history
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
+
+
+# starship
+export STARSHIP_CONFIG=~/.starship.toml
+eval "$(starship init zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+alias cd='z'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd......='cd ../../../../..'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/chao/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/chao/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/chao/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/chao/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/chao/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/chao/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+source ~/.bash_aliases

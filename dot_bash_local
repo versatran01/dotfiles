@@ -44,15 +44,6 @@ export LESS_TERMCAP_se=$'\e[0m'     # end standout-mode
 export LESS_TERMCAP_ue=$'\e[0m'     # end underline
 export GROFF_NO_SGR=1               # for konsole and gnome-terminal
 
-# Functions definitions.
-# You may want to put all your funtions into a separate file like
-# ~/.bash_functions, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
-
 # autojump
 if [ -f /usr/share/autojump/autojump.sh ]; then
     source /usr/share/autojump/autojump.sh
@@ -85,22 +76,15 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export GTEST_COLOR=1
 
-source ~/.local/share/blesh/ble.sh
-ble-face auto_complete='fg=242,bg=235'
+if [ -f ~/.local/share/blesh/ble.sh ]; then
+  source ~/.local/share/blesh/ble.sh
+  ble-face auto_complete='fg=242,bg=235'
+fi
 
 # Get my ip address
 function myip() {
     local myip=$(w3m -dump http://checkip.dyndns.org:8245/)
     echo "${myip}"
-}
-
-# finds directory sizes and lists them for the current directory
-function dirsize() {
-    du -shx * .[a-zA-Z0-9_]* 2>/dev/null |
-        egrep '^ *[0-9.]*[MG]' | sort -n >/tmp/list
-    egrep '^ *[0-9.]*M' /tmp/list
-    egrep '^ *[0-9.]*G' /tmp/list
-    rm -rf /tmp/list
 }
 
 # Easy extract
