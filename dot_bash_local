@@ -52,7 +52,7 @@ else
 fi
 
 # starship
-export STARSHIP_CONFIG=~/config/starship.toml
+export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init bash)"
 
 eval "$(zoxide init bash)"
