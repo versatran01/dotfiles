@@ -37,3 +37,6 @@
   added = green bold
   changed = yellow bold
   untracked = red bold
+[rebase]
+  autosquash = true
+  autoStash = true

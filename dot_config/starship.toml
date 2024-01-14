@@ -99,7 +99,7 @@ format = "[ $read_only]($read_only_style)[$path ]($style)"
 [git_branch]
 symbol = "\ue0a0"
 truncation_symbol = ""
-style = "bold fg:white bg:90"
+style = "bold fg:white bg:color_purple"
 format = "[ ${symbol} $branch ]($style)"
 
 [git_status]
