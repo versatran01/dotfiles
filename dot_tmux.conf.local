@@ -93,10 +93,9 @@ gruvbox_dark_color_orange="#d65d0e"
 gruvbox_dark_color_purple="#b16286"
 gruvbox_dark_color_red="#cc241d"
 gruvbox_dark_color_yellow="#d79921"
-gruvbox_dark_color_white = '#fbf1c7'
-gruvbox_dark_color_bg1 = '#3c3836'
-gruvbox_dark_color_bg2 = '#665c54'
-
+gruvbox_dark_color_white="#fbf1c7"
+gruvbox_dark_color_bg1="#3c3836"
+gruvbox_dark_color_bg2="#665c54"
 
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
@@ -268,13 +267,15 @@ tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #{?battery_stat
 
 
 # status left style
-tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
+# tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
+# tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
+tmux_conf_theme_status_left_fg="$gruvbox_dark_color_white,$gruvbox_dark_color_white,$tmux_conf_theme_colour_8"
+tmux_conf_theme_status_left_bg="$gruvbox_dark_color_red,$gruvbox_dark_color_orange,$tmux_conf_theme_colour_11"
 tmux_conf_theme_status_left_attr="bold,bold,none"
 
 # status right style
 tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_14"
-tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_17"
+tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$gruvbox_dark_color_bg2,$tmux_conf_theme_colour_17"
 tmux_conf_theme_status_right_attr="none,none,bold"
 
 # pairing indicator

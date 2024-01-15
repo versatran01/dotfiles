@@ -130,7 +130,7 @@ python_binary = "python"
 [cmake]
 symbol = "🇨 "
 style = "bold blue"
-format = '[ $symbol($version)]($style)'
+format = '[ $symbol ($version)]($style)'
 disabled = false
 
 [rust]
