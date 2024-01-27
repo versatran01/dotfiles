@@ -55,16 +55,6 @@ fi
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init bash)"
 
-eval "$(zoxide init bash)"
-alias cd='z'
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd......='cd ../../../../..'
-
-eval "$(atuin init bash --disable-up-arrow --disable-ctrl-r)"
-
 export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --no-ignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 

@@ -19,10 +19,7 @@ alias grep='grep --color'
 alias tmux='tmux -2'
 alias eecho='echo -e'
 alias btop='bpytop'
-alias gtop='gpustat --no-header --color -u -P -i'
 alias dstat='dstat -cdlmnpsy'
-alias df='pydf'
-alias nnn='nnn -e'
 
 # git
 alias grt='cd $(git rev-parse --show-toplevel)'
@@ -35,14 +32,18 @@ alias gdh='git diff HEAD'
 alias sbrc='source ~/.bashrc'
 alias szrc='source ~/.zshrc'
 
+# python
 alias ppwd='export PYTHONPATH=$(pwd):$PYTHONPATH'
 
 # cpu
 alias cpuperf='sudo cpupower frequency-set --governor performance'
 alias cpusave='sudo cpupower frequency-set --governor powersave'
 
+# cmake
 alias cmb='cmake -B build'
 alias cbb='cmake --build build'
 
 alias ls='eza'
 alias ll='eza -l --icons'
+
+alias scon='eval "$(/home/chao/miniforge3/bin/conda shell.bash hook)"'
