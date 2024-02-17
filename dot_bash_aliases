@@ -1,7 +1,3 @@
-# vim
-export EDITOR=nvim
-alias vim='nvim'
-
 # programs
 alias xc='xclip -se c'
 alias xo='xdg-open'
@@ -46,4 +42,5 @@ alias cbb='cmake --build build'
 alias ls='eza'
 alias ll='eza -l --icons'
 
-alias scon='eval "$(/home/chao/miniforge3/bin/conda shell.bash hook)"'
+alias scon='source ~/miniforge3/etc/profile.d/conda.sh; source ~/miniforge3/etc/profile.d/mamba.sh'
+
