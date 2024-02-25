@@ -34,18 +34,12 @@ export TERM=xterm-256color
 # source inputrc
 export INPUTRC=~/.inputrc
 
-# Less Colors for Man Pages
-export LESS_TERMCAP_mb=$'\e[01;31m' # begin blinking
-export LESS_TERMCAP_md=$'\e[01;32m' # begin bold
-export LESS_TERMCAP_so=$'\e[01;44m' # begin standout-mode - info box
-export LESS_TERMCAP_us=$'\e[01;33m' # begin underline
-export LESS_TERMCAP_me=$'\e[0m'     # end mode
-export LESS_TERMCAP_se=$'\e[0m'     # end standout-mode
-export LESS_TERMCAP_ue=$'\e[0m'     # end underline
-export GROFF_NO_SGR=1               # for konsole and gnome-terminal
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --no-ignore'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 [ -f ~/.cargo/env ] && source ~/.cargo/env
+[ -f ~/.bash_functions ] && source ~/.bash_functions
 
 # autojump
 if [ -f /usr/share/autojump/autojump.sh ]; then
@@ -58,41 +52,9 @@ fi
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init bash)"
 
-export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --no-ignore'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-export GTEST_COLOR=1
+eval "$(zoxide init bash)"
 
 if [ -f ~/.local/share/blesh/ble.sh ]; then
   source ~/.local/share/blesh/ble.sh
   ble-face auto_complete='fg=242,bg=235'
 fi
-
-# conda
-export CONDA_TOP_DIR="$HOME/miniforge3"
-
-if [ -z $CONDA_TOP_DIR ]; then
-    echo "sc(): Please set CONDA_TOP_DIR to the conda installation directory for this script to work."
-fi
-
-_conda_switch() {
-    local cur CONDA_ENVS
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    CONDA_ENVS=$(find $CONDA_TOP_DIR/envs -mindepth 1 -maxdepth 1 -type d | grep -v "^.$" | sed 's/.*\///')
-    COMPREPLY=($(compgen -W "${CONDA_ENVS}" -- ${cur}))
-    return 0
-}
-
-# conda switch
-sc() {
-    if [ $# -eq 1 ]; then
-        echo "mamba activate $1"
-        mamba activate $1
-    else
-        echo "mamba activate base"
-        mamba activate base
-    fi
-}
-
-complete -F _conda_switch sc

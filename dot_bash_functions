@@ -1,0 +1,31 @@
+# conda
+export CONDA_TOP_DIR="$HOME/miniforge3"
+
+source $CONDA_TOP_DIR/etc/profile.d/conda.sh
+source $CONDA_TOP_DIR/etc/profile.d/mamba.sh
+
+if [ -z $CONDA_TOP_DIR ]; then
+    echo "sc(): Please set CONDA_TOP_DIR to the conda installation directory for this script to work."
+fi
+
+_conda_switch() {
+    local cur CONDA_ENVS
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    CONDA_ENVS=$(find $CONDA_TOP_DIR/envs -mindepth 1 -maxdepth 1 -type d | grep -v "^.$" | sed 's/.*\///')
+    COMPREPLY=($(compgen -W "${CONDA_ENVS}" -- ${cur}))
+    return 0
+}
+
+# conda switch
+sc() {
+    if [ $# -eq 1 ]; then
+        echo "mamba activate $1"
+        mamba activate $1
+    else
+        echo "mamba activate base"
+        mamba activate base
+    fi
+}
+
+complete -F _conda_switch sc

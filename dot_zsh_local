@@ -1,11 +1,12 @@
-# vim
-export EDITOR=nvim
-alias vim='nvim'
+export EDITOR=vim
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --no-ignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+[ -f ~/.cargo/env ] && source ~/.cargo/env
+[ -f ~/.bash_functions ] && source ~/.bash_functions
 
 # history
 export HISTSIZE=1000000
@@ -16,9 +17,13 @@ setopt EXTENDED_HISTORY
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
+eval "$(zoxide init zsh)"
+
+export MODULAR_HOME="$HOME/.modular"
+export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
+
 source ~/.bash_aliases
+source ~/.bash_functions
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /etc/zsh_command_not_found
-
-eval "$(zoxide init zsh)"
