@@ -43,4 +43,3 @@ alias ls='eza'
 alias ll='eza -l --icons'
 
 alias scon='source ~/miniforge3/etc/profile.d/conda.sh; source ~/miniforge3/etc/profile.d/mamba.sh'
-

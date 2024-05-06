@@ -43,9 +43,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # autojump
 if [ -f /usr/share/autojump/autojump.sh ]; then
-    source /usr/share/autojump/autojump.sh
+  source /usr/share/autojump/autojump.sh
 else
-    [[ -s /etc/profile.d/autojump.bash ]] && . /etc/profile.d/autojump.bash
+  [[ -s /etc/profile.d/autojump.bash ]] && . /etc/profile.d/autojump.bash
 fi
 
 # starship

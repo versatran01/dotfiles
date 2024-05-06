@@ -1,6 +1,6 @@
 export EDITOR=vim
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_functions ] && source ~/.bash_functions
@@ -22,3 +22,4 @@ export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /etc/zsh_command_not_found
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
