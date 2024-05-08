@@ -14,7 +14,6 @@ alias cpi='cp -i'
 alias grep='grep --color'
 alias tmux='tmux -2'
 alias eecho='echo -e'
-alias btop='bpytop'
 alias dstat='dstat -cdlmnpsy'
 
 # git
