@@ -8,9 +8,12 @@ eval "$(fzf --zsh)"
 [ -f ~/.fzf-git.sh/fzf-git.sh ] && source ~/.fzf-git.sh/fzf-git.sh
 
 # history
-export HISTSIZE=1000000
+export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
-setopt EXTENDED_HISTORY
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt extended_history
 
 # fzf preview
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
@@ -38,6 +41,6 @@ eval "$(zoxide init zsh)"
 export MODULAR_HOME="$HOME/.modular"
 export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /etc/zsh_command_not_found

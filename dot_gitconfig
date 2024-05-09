@@ -40,12 +40,17 @@
 [rebase]
   autosquash = true
   autoStash = true
-[interactive]
-  diffFilter = delta --color-only
 [merge]
   conflictstyle = diff3
 [diff]
+  external = difft
   colorMoved = default
+[pull]
+  rebase = true
 [delta]
+  line-numbers = true
+  features = decorations
   navigate = true
   side-by-side = true
+[interactive]
+  diffFilter = delta --color-only

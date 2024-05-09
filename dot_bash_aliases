@@ -41,4 +41,5 @@ alias cbb='cmake --build build'
 alias ls='eza'
 alias ll='eza -l --icons'
 
+alias lg='lazygit'
 alias scon='source ~/miniforge3/etc/profile.d/conda.sh; source ~/miniforge3/etc/profile.d/mamba.sh'
