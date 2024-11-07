@@ -42,9 +42,6 @@
   autoStash = true
 [merge]
   conflictstyle = diff3
-[diff]
-  external = difft
-  colorMoved = default
 [pull]
   rebase = true
 [delta]
