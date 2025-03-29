@@ -3,7 +3,6 @@ export EDITOR=nvim
 
 eval "$(fzf --zsh)"
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
-[ -f ~/.bash_functions ] && source ~/.bash_functions
 [ -f ~/.fzf-git.sh/fzf-git.sh ] && source ~/.fzf-git.sh/fzf-git.sh
 
 # history
