@@ -7,12 +7,71 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "theme": "Catppuccin Mocha",
+  "icon_theme": "Catppuccin Mocha",
   "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "buffer_font_size": 14,
+  "buffer_font_family": "D2CodingLigature Nerd Font",
   "vim_mode": true,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "path": "clangd",
+        "arguments": []
+      }
+    },
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace",
+          "typeCheckingMode": "basic"
+        }
+      }
+    }
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.cache",
+    "**/.settings",
+    "**/.mypy_cache",
+    "**/.pytest_cache"
+  ],
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["pyright", "ruff"],
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        },
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true
+            // "source.fixAll.ruff": true
+          }
+        }
+      ]
+    }
   }
 }
