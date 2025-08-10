@@ -42,3 +42,4 @@ alias ls='eza'
 alias ll='eza -l --icons'
 
 alias lg='lazygit'
+alias zj='zellij'
