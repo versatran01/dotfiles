@@ -9,6 +9,7 @@ $os\
 $shell\
 ${custom.ssh}\
 $conda\
+$pixi\
 ${custom.ros}\
 $directory\
 $time\
@@ -79,6 +80,11 @@ disabled = true
 symbol = "🅒"
 ignore_base = false
 style = "bold fg:color_white bg:color_aqua"
+format = "[ $symbol $environment ]($style)"
+
+[pixi]
+symbol = "🅟"
+style = "bold fg:color_white bg:color_yellow"
 format = "[ $symbol $environment ]($style)"
 
 [custom.ros]
