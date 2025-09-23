@@ -1,6 +1,10 @@
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export EDITOR=nvim
 
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 eval "$(fzf --zsh)"
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.fzf-git.sh/fzf-git.sh ] && source ~/.fzf-git.sh/fzf-git.sh
