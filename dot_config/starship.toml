@@ -3,24 +3,19 @@ command_timeout = 2000
 add_newline = false
 
 format = """
+$os\
 $username\
 $hostname\
-$os\
 $shell\
 ${custom.ssh}\
-$conda\
-$pixi\
-${custom.ros}\
 $directory\
-$time\
 $git_branch\
+$git_status\
 $git_commit\
 $git_state\
-$git_status\
-$docker_context\
+$conda\
+$time\
 $python\
-$cmake\
-$rust\
 $status\
 $cmd_duration\
 $line_break\
@@ -42,10 +37,20 @@ color_white = '#fbf1c7'
 color_bg1 = '#3c3836'
 color_bg2 = '#665c54'
 
+[os]
+disabled = false
+style = "bold fg:color_white bg:color_red"
+format = '[ $symbol]($style)'
+
+[os.symbols]
+Windows = " "
+Ubuntu = "󰕈 "
+Macos = "󰀵 "
+
 [username]
 style_user = "bold fg:color_white bg:color_red"
 style_root = "bold fg:yellow bg:color_red"
-format = "[ $user ]($style)"
+format = "[$user ]($style)"
 show_always = true
 disabled = false
 
@@ -55,16 +60,12 @@ style = "bold fg:color_white bg:color_orange"
 format = "[ $hostname$ssh_symbol ]($style)"
 disabled = false
 
-[os]
-disabled = false
-style = "fg:color_white bg:color_yellow"
-format = '[ $symbol]($style)'
 
 [shell]
-bash_indicator = "B"
-zsh_indicator = "Z"
-fish_indicator = "F"
-style = "bold fg:color_white bg:color_green"
+bash_indicator = "🅑 "
+zsh_indicator = "🅩 "
+fish_indicator = "🅕 "
+style = "bold fg:color_white bg:color_yellow"
 format = "[ $indicator ]($style)"
 disabled = false
 
@@ -76,15 +77,55 @@ when = """ test ! -z "$SSH_CLIENT" """
 format = "[ $symbol $output ]($style)"
 disabled = true
 
+
+[directory]
+truncation_length = 8
+truncate_to_repo = false
+style = "fg:color_white bg:color_bg1"
+read_only_style = "bg:color_bg1"
+disabled = false
+format = "[ $read_only]($read_only_style)[$path ]($style)"
+
+[time]
+style = "bold bg:color_bg2"
+format = '[   $time ]($style)'
+time_format = "%R"
+disabled = false
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = " "
+truncation_symbol = ""
+style = "bold fg:color_white bg:color_green"
+format = "[ ${symbol} $branch ]($style)"
+
+[git_status]
+style = "bold fg:color_white bg:color_aqua"
+ahead = "⇡${count}"
+diverged = "⇡ ${ahead_count}⇣ ${behind_count}"
+behind = "⇣${count}"
+format = '([ $all_status$ahead_behind ]($style))'
+
+[git_state]
+format = '[ \($state( $progress_current of $progress_total)\) ]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_commit]
+format = "[\\($hash$tag\\) ]($style)"
+style = "bold fg:color_white bg:color_aqua"
+only_detached = true
+disabled = false
+
 [conda]
 symbol = "🅒"
 ignore_base = false
-style = "bold fg:color_white bg:color_aqua"
-format = "[ $symbol $environment ]($style)"
-
-[pixi]
-symbol = "🅟"
-style = "bold fg:color_white bg:color_yellow"
+style = "bold fg:color_white bg:color_purple"
 format = "[ $symbol $environment ]($style)"
 
 [custom.ros]
@@ -95,54 +136,9 @@ when = """ test ! -z "$ROS_DISTRO" """
 format = "[ $symbol $output ]($style)"
 disabled = true
 
-[directory]
-truncation_length = 8
-truncate_to_repo = false
-style = "fg:color_white bg:color_bg1"
-read_only_style = "bg:color_bg1"
-disabled = false
-format = "[ $read_only]($read_only_style)[$path ]($style)"
-
-[git_branch]
-symbol = "\ue0a0"
-truncation_symbol = ""
-style = "bold fg:color_white bg:color_purple"
-format = "[ ${symbol} $branch ]($style)"
-
-[git_status]
-style = "bold fg:208"
-ahead = "⇡${count}"
-diverged = "⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
-format = '([ \[$all_status$ahead_behind\]]($style))'
-
-[git_state]
-format = '[ \($state( $progress_current of $progress_total)\) ]($style) '
-cherry_pick = "[🍒 PICKING](bold red)"
-
-[git_commit]
-format = "[ \\($hash$tag\\)]($style) "
-
-[time]
-style = "bold bg:color_blue"
-format = '[  $time ]($style)'
-time_format = "%R"
-disabled = false
-
 [python]
 format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 python_binary = "python"
-
-[cmake]
-symbol = "🇨 "
-style = "bold blue"
-format = '[ $symbol ($version)]($style)'
-disabled = false
-
-[rust]
-style = "bold red"
-format = '[ $symbol($version)]($style)'
-disabled = false
 
 [cmd_duration]
 style = "bold 45"
