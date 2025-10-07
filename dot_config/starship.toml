@@ -7,12 +7,10 @@ $os\
 $username\
 $hostname\
 $shell\
-${custom.ssh}\
 $directory\
 $git_branch\
 $git_status\
 $git_commit\
-$git_state\
 $conda\
 $time\
 $python\
@@ -40,7 +38,7 @@ color_bg2 = '#665c54'
 [os]
 disabled = false
 style = "bold fg:color_white bg:color_red"
-format = '[ $symbol]($style)'
+format = '[$symbol]($style)'
 
 [os.symbols]
 Windows = " "
@@ -56,8 +54,9 @@ disabled = false
 
 [hostname]
 ssh_only = false
+ssh_symbol = "🅢 "
 style = "bold fg:color_white bg:color_orange"
-format = "[ $hostname$ssh_symbol ]($style)"
+format = "[ $ssh_symbol$hostname ]($style)"
 disabled = false
 
 
@@ -68,15 +67,6 @@ fish_indicator = "🅕 "
 style = "bold fg:color_white bg:color_yellow"
 format = "[ $indicator ]($style)"
 disabled = false
-
-[custom.ssh]
-command = "echo SSH"
-style = "bold fg:color_white bg:color_aqua"
-symbol = "🅢"
-when = """ test ! -z "$SSH_CLIENT" """
-format = "[ $symbol $output ]($style)"
-disabled = true
-
 
 [directory]
 truncation_length = 8
@@ -102,15 +92,15 @@ disabled = false
 [git_branch]
 symbol = " "
 truncation_symbol = ""
-style = "bold fg:color_white bg:color_green"
-format = "[ ${symbol} $branch ]($style)"
+style = "bold fg:color_white bg:color_purple"
+format = "[ ${symbol}$branch ]($style)"
 
 [git_status]
-style = "bold fg:color_white bg:color_aqua"
-ahead = "⇡${count}"
+style = "bold fg:color_white bg:color_purple"
+ahead = "⇡ ${count}"
 diverged = "⇡ ${ahead_count}⇣ ${behind_count}"
-behind = "⇣${count}"
-format = '([ $all_status$ahead_behind ]($style))'
+behind = "⇣ ${count}"
+format = '([$all_status$ahead_behind ]($style))'
 
 [git_state]
 format = '[ \($state( $progress_current of $progress_total)\) ]($style) '
@@ -118,23 +108,15 @@ cherry_pick = "[🍒 PICKING](bold red)"
 
 [git_commit]
 format = "[\\($hash$tag\\) ]($style)"
-style = "bold fg:color_white bg:color_aqua"
+style = "bold fg:color_white bg:color_purple"
 only_detached = true
 disabled = false
 
 [conda]
 symbol = "🅒"
 ignore_base = false
-style = "bold fg:color_white bg:color_purple"
 format = "[ $symbol $environment ]($style)"
-
-[custom.ros]
-command = "echo $ROS_DISTRO $CATKIN_WS_NAME"
-style = "bold fg:color_white bg:blue"
-symbol = "🅡"
-when = """ test ! -z "$ROS_DISTRO" """
-format = "[ $symbol $output ]($style)"
-disabled = true
+style = "bold fg:color_white bg:color_aqua"
 
 [python]
 format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
