@@ -14,6 +14,7 @@ $git_commit\
 $conda\
 $time\
 $python\
+$golang\
 $status\
 $cmd_duration\
 $line_break\
@@ -38,7 +39,7 @@ color_bg2 = '#665c54'
 [os]
 disabled = false
 style = "bold fg:color_white bg:color_red"
-format = '[$symbol]($style)'
+format = '[ $symbol]($style)'
 
 [os.symbols]
 Windows = " "
@@ -122,9 +123,20 @@ style = "bold fg:color_white bg:color_aqua"
 format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 python_binary = "python"
 
+[golang]
+format = '[ $symbol($version )]($style)'
+
 [cmd_duration]
 style = "bold 45"
-format = "[ $duration]($style)"
+format = "[$duration]($style)"
+
+[status]
+success_style = 'bold green'
+success_symbol = '🟢 OK'
+symbol = '🔴'
+format = '[ $symbol $common_meaning$signal_name$maybe_int]($style) '
+map_symbol = true
+disabled = false
 
 [sudo]
 style = 'bold green'
