@@ -13,6 +13,7 @@ $git_status\
 $git_commit\
 $conda\
 $time\
+$cmake\
 $python\
 $golang\
 $status\
@@ -114,7 +115,7 @@ only_detached = true
 disabled = false
 
 [conda]
-symbol = "🅒"
+symbol = "🅒 "
 ignore_base = false
 format = "[ $symbol $environment ]($style)"
 style = "bold fg:color_white bg:color_aqua"
@@ -137,6 +138,11 @@ symbol = '🔴'
 format = '[ $symbol $common_meaning$signal_name$maybe_int]($style) '
 map_symbol = true
 disabled = false
+
+[cmake]
+symbol = " "
+style = "bold fg:color_yellow"
+format = '[ $symbol $version]($style)'
 
 [sudo]
 style = 'bold green'
