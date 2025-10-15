@@ -14,6 +14,7 @@ $git_commit\
 $conda\
 $time\
 $cmake\
+$cpp\
 $python\
 $golang\
 $status\
@@ -121,11 +122,13 @@ format = "[ $symbol $environment ]($style)"
 style = "bold fg:color_white bg:color_aqua"
 
 [python]
+symbol = " "
 format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 python_binary = "python"
 
 [golang]
-format = '[ $symbol($version )]($style)'
+symbol = " "
+format = '[ $symbol($version)]($style)'
 
 [cmd_duration]
 style = "bold 45"
@@ -140,9 +143,16 @@ map_symbol = true
 disabled = false
 
 [cmake]
+symbol = "▲ "
+style = "bold fg:color_orange"
+format = '[ $symbol($version)]($style)'
+
+[cpp]
 symbol = " "
 style = "bold fg:color_yellow"
-format = '[ $symbol $version]($style)'
+format = '[ $symbol($version)]($style)'
+detect_files = ["CMakeLists.txt"]
+disabled = false
 
 [sudo]
 style = 'bold green'
