@@ -18,6 +18,10 @@
   last = log -1 HEAD
   pr = pull --recurse-submodules
   df = diff
+    # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+  dl = -c diff.external=difft log --ext-diff
+  ds = -c diff.external=difft show --ext-diff
+  dft = -c diff.external=difft diff
 [color]
   branch = auto
   diff = auto
