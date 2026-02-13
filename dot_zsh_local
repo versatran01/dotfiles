@@ -6,6 +6,7 @@ zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
 eval "$(fzf --zsh)"
+[ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.fzf-git.sh/fzf-git.sh ] && source ~/.fzf-git.sh/fzf-git.sh
 
