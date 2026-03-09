@@ -1,0 +1,82 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-l": "editor::Format",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-left": "pane::GoBack",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-right": "pane::GoForward",
+    },
+  },
+  {
+    "context": "EditPredictionContext > Editor",
+    "bindings": {
+      "alt-left": null,
+    },
+  },
+  {
+    "context": "EditPredictionContext > Editor",
+    "bindings": {
+      "alt-right": null,
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-w": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual || vim_mode == insert)",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      "ctrl-c": "editor::Copy",
+      "ctrl-x": "editor::Cut",
+      "ctrl-v": "editor::Paste",
+      "ctrl-z": "editor::Undo",
+      "ctrl-y": "editor::Redo",
+      "ctrl-a": "editor::SelectAll",
+      "ctrl-f": "buffer_search::Deploy",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "f2": "editor::GoToDefinition"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-r": "editor::Rename"
+    }
+  }
+]
