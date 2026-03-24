@@ -43,5 +43,6 @@
     "**/.settings",
     "**/.mypy_cache",
     "**/.pytest_cache",
+    "**/*cache__",
   ],
 }
