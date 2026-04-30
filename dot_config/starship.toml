@@ -116,10 +116,10 @@ only_detached = true
 disabled = false
 
 [conda]
-symbol = "🅒 "
 ignore_base = false
 format = "[ $symbol $environment ]($style)"
 style = "bold fg:color_white bg:color_aqua"
+symbol = "🅒 "
 
 [python]
 symbol = " "
