@@ -115,6 +115,3 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
-
-# opencode
-export PATH=/home/chao/.opencode/bin:$PATH
