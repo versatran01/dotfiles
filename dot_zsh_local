@@ -14,11 +14,7 @@ else
 fi
 export EDITOR=nvim
 
-# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-# source <(carapace _carapace)
-
-eval "$(fzf --zsh)"
+command -v fzf >/dev/null && eval "$(fzf --zsh)"
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.fzf-git.sh/fzf-git.sh ] && source ~/.fzf-git.sh/fzf-git.sh
@@ -27,7 +23,6 @@ eval "$(fzf --zsh)"
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
-HISTDUP=erase
 setopt append_history
 setopt extended_history
 setopt share_history
@@ -38,10 +33,17 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 setopt hist_expire_dups_first
 bindkey '^p' history-search-backward
-bindkey '^n' history-search-backward
+bindkey '^n' history-search-forward
 
-# fzf preview
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+# fzf preview — Debian/Ubuntu ship `bat` as `batcat`, so pick whichever exists.
+if command -v bat >/dev/null; then
+  BAT_BIN=bat
+elif command -v batcat >/dev/null; then
+  BAT_BIN=batcat
+else
+  BAT_BIN=cat
+fi
+export FZF_CTRL_T_OPTS="--preview '$BAT_BIN -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
 _fzf_comprun() {
@@ -52,16 +54,16 @@ _fzf_comprun() {
   cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
   export | unset) fzf --preview "eval 'echo $'{}" "$@" ;;
   ssh) fzf --preview 'dig {}' "$@" ;;
-  *) fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  *) fzf --preview "$BAT_BIN -n --color=always --line-range :500 {}" "$@" ;;
   esac
 }
 
 # starship
 export STARSHIP_CONFIG=~/.config/starship.toml
-eval "$(starship init zsh)"
+command -v starship >/dev/null && eval "$(starship init zsh)"
 
 # zoxide
-eval "$(zoxide init zsh)"
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 # yazi
 function y() {
@@ -75,10 +77,22 @@ function y() {
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
 fi
 
-source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+autoload -Uz compinit
+# Regenerate the completion dump at most once a day; otherwise load it with -C
+# (skips the slow security check, making shell startup noticeably faster).
+() {
+  local dump=( ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24) )
+  if (( $#dump )); then
+    compinit
+  else
+    compinit -C
+  fi
+}
+
+[ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] \
+  && source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# Note: zsh-syntax-highlighting must be sourced last.
+[ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] \
+  && source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
