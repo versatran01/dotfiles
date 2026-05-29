@@ -1,4 +1,17 @@
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Set up Homebrew based on OS. `brew shellenv` exports $HOMEBREW_PREFIX et al.
+if [[ "$OSTYPE" == darwin* ]]; then
+  # macOS: Apple Silicon at /opt/homebrew, Intel at /usr/local
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+else
+  # Linux (Ubuntu): Linuxbrew
+  if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
+fi
 export EDITOR=nvim
 
 # export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional

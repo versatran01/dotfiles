@@ -47,3 +47,5 @@ alias mas='mamba activate sv'
 alias mua='mamba update --all'
 
 alias groot='cd "$(git rev-parse --show-toplevel)"'
+alias gpocbl='git push origin "$(git branch --show-current)" --force-with-lease'
+alias gprom='git pull --rebase origin main'
