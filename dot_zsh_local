@@ -91,6 +91,8 @@ autoload -Uz compinit
   fi
 }
 
+eval "$(pixi completion --shell zsh)"
+
 [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] \
   && source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # Note: zsh-syntax-highlighting must be sourced last.

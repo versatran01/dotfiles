@@ -1,3 +1,5 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 scan_timeout = 30
 command_timeout = 2000
 add_newline = false
@@ -13,6 +15,7 @@ $git_status\
 $git_commit\
 $conda\
 $time\
+$pixi\
 $cmake\
 $cpp\
 $python\
@@ -117,14 +120,18 @@ disabled = false
 
 [conda]
 ignore_base = false
-format = "[ $symbol $environment ]($style)"
 style = "bold fg:color_white bg:color_aqua"
+format = "[ $symbol $environment ]($style)"
 symbol = "🅒 "
+detect_env_vars = []
 
 [python]
 symbol = " "
 format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 python_binary = "python"
+
+[pixi]
+format = ' [$symbol($version )(\($environment\))]($style)'
 
 [golang]
 symbol = " "
