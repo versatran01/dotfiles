@@ -12,7 +12,12 @@ else
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 fi
-export EDITOR=nvim
+if command -v nvim &>/dev/null; then
+  export EDITOR=nvim
+elif command -v vim &>/dev/null; then
+  export EDITOR=vim
+fi
+
 
 command -v fzf >/dev/null && eval "$(fzf --zsh)"
 [ -f ~/.cargo/env ] && source ~/.cargo/env

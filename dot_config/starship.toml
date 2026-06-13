@@ -131,7 +131,7 @@ format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 python_binary = "python"
 
 [pixi]
-format = ' [$symbol($version )(\($environment\))]($style)'
+format = ' [$symbol($version)( \($environment\))]($style)'
 detect_files = ['pixi.toml', 'pyproject.toml']
 
 [golang]
