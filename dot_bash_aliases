@@ -1,9 +1,7 @@
 # programs
-alias xc='xclip -se c'
 alias xo='xdg-open'
 alias sup='sudo apt update'
 alias sug='sudo apt upgrade'
-alias smi='sudo make install'
 alias acl='sudo apt autoclean'
 alias arm='sudo apt autoremove'
 
@@ -22,6 +20,9 @@ alias gst='git status'
 alias gba='git branch -a'
 alias gdf='git diff'
 alias gdh='git diff HEAD'
+alias groot='cd "$(git rev-parse --show-toplevel)"'
+alias gpocbl='git push origin "$(git branch --show-current)" --force-with-lease'
+alias gprom='git pull --rebase origin main'
 
 # source bashrc
 alias sbrc='source ~/.bashrc'
@@ -30,22 +31,12 @@ alias szrc='source ~/.zshrc'
 # python
 alias ppwd='export PYTHONPATH=$(pwd):$PYTHONPATH'
 
-# cpu
-alias cpuperf='sudo cpupower frequency-set --governor performance'
-alias cpusave='sudo cpupower frequency-set --governor powersave'
-
-# cmake
-alias cmb='cmake -B build'
-alias cbb='cmake --build build'
-
-alias ls='eza'
-alias ll='eza -l --icons'
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza'
+  alias ll='eza -l --icons'
+else
+  alias ll='ls -l'
+fi
 
 alias lg='lazygit'
 alias zj='zellij'
-alias mas='mamba activate sv'
-alias mua='mamba update --all'
-
-alias groot='cd "$(git rev-parse --show-toplevel)"'
-alias gpocbl='git push origin "$(git branch --show-current)" --force-with-lease'
-alias gprom='git pull --rebase origin main'
