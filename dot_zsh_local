@@ -98,6 +98,10 @@ autoload -Uz compinit
 
 eval "$(pixi completion --shell zsh)"
 
+godot-nv() {
+    __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia godot "$@"
+}
+
 [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] \
   && source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # Note: zsh-syntax-highlighting must be sourced last.
