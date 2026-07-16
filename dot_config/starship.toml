@@ -5,16 +5,16 @@ command_timeout = 2000
 add_newline = false
 
 format = """
-$os\
-$username\
-$hostname\
 $shell\
+$username\
+$os\
+$hostname\
+$time\
 $directory\
 $git_branch\
 $git_status\
 $git_commit\
 $conda\
-$time\
 $pixi\
 $cmake\
 $cpp\
@@ -42,22 +42,30 @@ color_white = '#fbf1c7'
 color_bg1 = '#3c3836'
 color_bg2 = '#665c54'
 
+[shell]
+bash_indicator = "🅑 "
+zsh_indicator = "🅩 "
+fish_indicator = "🅕 "
+style = "bold fg:color_white bg:color_red"
+format = "[ $indicator]($style)"
+disabled = false
+
+[username]
+style_user = "bold fg:color_white bg:color_red"
+style_root = "bold fg:yellow bg:color_red"
+format = "[ $user ]($style)"
+show_always = true
+disabled = false
+
 [os]
 disabled = false
-style = "bold fg:color_white bg:color_red"
+style = "bold fg:color_white bg:color_orange"
 format = '[ $symbol]($style)'
 
 [os.symbols]
 Windows = " "
 Ubuntu = "󰕈 "
 Macos = "󰀵 "
-
-[username]
-style_user = "bold fg:color_white bg:color_red"
-style_root = "bold fg:yellow bg:color_red"
-format = "[$user ]($style)"
-show_always = true
-disabled = false
 
 [hostname]
 ssh_only = false
@@ -66,34 +74,20 @@ style = "bold fg:color_white bg:color_orange"
 format = "[ $ssh_symbol$hostname ]($style)"
 disabled = false
 
-[shell]
-bash_indicator = "🅑 "
-zsh_indicator = "🅩 "
-fish_indicator = "🅕 "
-style = "bold fg:color_white bg:color_yellow"
-format = "[ $indicator ]($style)"
+[time]
+style = "bold bg:color_yellow"
+format = '[   $time ]($style)'
+time_format = "%R"
 disabled = false
 
 [directory]
 truncation_length = 8
 truncate_to_repo = false
 style = "fg:color_white bg:color_bg1"
-read_only_style = "bg:color_bg1"
+read_only = "🔒 "
+read_only_style = "fg:color_white bg:color_bg1"
 disabled = false
-format = "[ $read_only]($read_only_style)[$path ]($style)"
-
-[time]
-style = "bold bg:color_bg2"
-format = '[   $time ]($style)'
-time_format = "%R"
-disabled = false
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
+format = "[ $read_only]($read_only_style)[🖿  $path ]($style)"
 
 [git_branch]
 symbol = " "
@@ -126,17 +120,18 @@ symbol = "🅒 "
 detect_env_vars = []
 
 [python]
-# symbol = " "
+symbol = " "
 format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 python_binary = "python"
 
 [pixi]
+symbol = "✦ "
 format = '[ $symbol($version)(\($environment\))]($style)'
 detect_files = ['pixi.toml', 'pyproject.toml']
 style = "bold fg:color_purple"
 
 [golang]
-# symbol = " "
+symbol = " "
 format = '[ $symbol($version)]($style)'
 style = "bold fg:color_aqua"
 
@@ -153,13 +148,12 @@ map_symbol = true
 disabled = false
 
 [cmake]
-symbol = "🔨 "
+symbol = "🛠 "
 style = "bold fg:color_red"
 format = '[ $symbol($version)]($style)'
 
 [cpp]
-# symbol = " "
-symbol = "🎓 "
+symbol = " "
 style = "bold fg:color_blue"
 format = '[ $symbol($version)]($style)'
 detect_files = ["CMakeLists.txt"]
