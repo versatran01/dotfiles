@@ -9,8 +9,8 @@ $shell\
 $username\
 $os\
 $hostname\
-$time\
 $directory\
+$time\
 $git_branch\
 $git_status\
 $git_commit\
@@ -75,7 +75,7 @@ format = "[ $ssh_symbol$hostname ]($style)"
 disabled = false
 
 [time]
-style = "bold bg:color_yellow"
+style = "bold bg:color_bg2"
 format = '[   $time ]($style)'
 time_format = "%R"
 disabled = false
@@ -128,7 +128,7 @@ python_binary = "python"
 symbol = "✦ "
 format = '[ $symbol($version)(\($environment\))]($style)'
 detect_files = ['pixi.toml', 'pyproject.toml']
-style = "bold fg:color_purple"
+style = "bold fg:color_yellow"
 
 [golang]
 symbol = " "
