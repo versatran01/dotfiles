@@ -57,7 +57,7 @@ font-thicken = true
 window-padding-x = 0
 window-padding-y = 0
 # Gives a clean liquid glass effect (Note: completely restart Ghostty for opacity changes to apply)
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur-radius = 20
 window-height = 36
 window-width = 150
@@ -72,7 +72,6 @@ clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 confirm-close-surface = false
 
-keybind = global:f12=toggle_quick_terminal
 quick-terminal-position = top
 quick-terminal-size = 100%,100%
 quick-terminal-animation-duration = 0.1
