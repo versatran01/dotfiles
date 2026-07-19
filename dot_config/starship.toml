@@ -123,12 +123,13 @@ detect_env_vars = []
 symbol = " "
 format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 python_binary = "python"
+style = "bold fg:color_yellow"
 
 [pixi]
 symbol = "✦ "
 format = '[ $symbol($version)(\($environment\))]($style)'
 detect_files = ['pixi.toml', 'pyproject.toml']
-style = "bold fg:color_yellow"
+style = "bold fg:color_green"
 
 [golang]
 symbol = " "
