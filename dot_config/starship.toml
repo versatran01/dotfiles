@@ -25,7 +25,8 @@ $status\
 $cmd_duration\
 $line_break\
 $jobs\
-$character"""
+$character
+"""
 
 # https://starship.rs/presets/gruvbox-rainbow.html
 palette = 'gruvbox_dark'
