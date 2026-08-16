@@ -57,7 +57,7 @@ font-thicken = true
 window-padding-x = 0
 window-padding-y = 0
 # Gives a clean liquid glass effect (Note: completely restart Ghostty for opacity changes to apply)
-background-opacity = 0.95
+background-opacity = 0.99
 background-blur-radius = 20
 window-height = 36
 window-width = 150
