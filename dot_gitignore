@@ -246,3 +246,4 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 __**cache__
+.serena

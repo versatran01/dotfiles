@@ -2,7 +2,20 @@ onboarding = false
 
 [ui]
 agent_panel_sort = "priority"
+tab_bar_position = "bottom"
+status_indicators = "symbols"
 
 [theme]
 name = "one-dark"
 auto_switch = false
+
+[keys]
+focus_pane_left = ["prefix+h", "alt+h"]
+focus_pane_down = ["prefix+j", "alt+j"]
+focus_pane_up = ["prefix+k", "alt+k"]
+focus_pane_right = ["prefix+l", "alt+l"]
+previous_tab = ["prefix+p", "alt+q"]
+next_tab = ["prefix+n", "alt+e"]
+
+[ui.toast]
+delivery = "herdr"
