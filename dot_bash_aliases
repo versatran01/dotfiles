@@ -40,3 +40,4 @@ fi
 
 alias lg='lazygit'
 alias zj='zellij'
+alias pu='pueue'
