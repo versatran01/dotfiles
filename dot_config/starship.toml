@@ -152,7 +152,7 @@ map_symbol = true
 disabled = false
 
 [cmake]
-symbol = "🛠 "
+symbol = "▲ "
 style = "bold fg:pink"
 format = '[ $symbol($version)]($style)'
 
