@@ -128,7 +128,7 @@ auto_enter_terminal_on_focus = 'off'
 click_to_type = 'double'
 dockbar_position = 'top'
 preferred_shell = ''
-motion = 'full'
+motion = 'none'
 modal_dim = 30
 whichkey_position = ''
 window_title_position = 'top'
@@ -136,7 +136,7 @@ hide_clock = false
 show_clock = false
 show_cpu = false
 show_ram = false
-theme = ''
+theme = "one_dark"
 border_focused_color = ''
 border_unfocused_color = ''
 window_title_format = ''
@@ -641,5 +641,4 @@ corner = 'bottom-right'
 [dock]
 [dock.clock]
 
-[appearance]
-theme = "one_dark"
+
